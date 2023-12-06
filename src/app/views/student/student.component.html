@@ -1,0 +1,54 @@
+<app-header></app-header>
+<!--codigo escaner-->
+<body>
+  <div id="scanner-container">
+    <video id="video" playsinline style="width: 100%;"></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+  </div>
+  <button id="start-scan-button">Iniciar Escaneo</button>
+  <div id="resultado"></div>
+
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const resultado = document.getElementById('resultado');
+    const startScanButton = document.getElementById('start-scan-button');
+    const scannerContainer = document.getElementById('scanner-container');
+
+    let scanner = new Instascan.Scanner({ video: video });
+    scanner.addListener('scan', function (content) {
+      
+      window.location.href = content;
+    });
+
+    startScanButton.addEventListener('click', function () {
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          startScanButton.textContent = 'Escaneando';
+          scanner.start(cameras[0]);
+          scannerContainer.style.display = 'block'; 
+        } else {
+          console.error('No se encontraron cámaras disponibles.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    });
+  </script>
+
+  <!--Fin del codigo de escaner-->
+  <form [formGroup]="inputForm" (ngSubmit)="getStudentByFile(inputForm.value)">
+    <button type="submit" class="btn btn-secondary">expediente</button><br/>
+    <input type="text" formControlName="file">
+  </form>
+  <table>
+      <tbody>
+        <tr *ngFor="let student of dataStudent[0] | keyvalue : returnZero">
+          <th>{{student.key}}</th>
+          <td>{{student.value}}</td>
+        </tr>     
+      </tbody>
+  </table>
+</body>
+<app-footer></app-footer>

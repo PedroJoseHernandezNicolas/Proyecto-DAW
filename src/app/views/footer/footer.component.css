@@ -1,0 +1,17 @@
+footer {
+    position: fixed;
+    height: 100px;
+    /*bottom: 0;*/
+    width: 100%;
+}
+#pie {
+    background-color: #666666;
+}
+
+img {
+    color: #FFFFFF;
+}
+
+a {
+    color: #A0B4C7;
+}

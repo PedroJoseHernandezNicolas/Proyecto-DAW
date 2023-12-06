@@ -1,0 +1,44 @@
+{
+    "posts": [
+      {
+        "result": "ok",
+        "alumnos": [
+            {
+                "expediente": "234567",
+                "dni": "12345678A",
+                "nombre": "Jose",
+                "apellido1": "Contreras",
+                "apellido2": "Fulgencio",
+                "fecha_nac": "2020-11-08",
+                "movil": "620212121",
+                "telefono_casa": "868457891",
+                "padre": "Juan Carlos",
+                "movil_padre": "620132123",
+                "madre": "Maria Jose",
+                "movil_madre": "659784512",
+                "autoriza_salida": "1",
+                "autoriza_imagen": "1"
+            },
+            {
+                "expediente": "1234568",
+                "dni": "87654321B",
+                "nombre": "Juan",
+                "apellido1": "Pardi",
+                "apellido2": "Rodriguez",
+                "fecha_nac": "2020-08-17",
+                "movil": "631793164",
+                "telefono_casa": "868741296",
+                "padre": "Antonio",
+                "movil_padre": "658730012",
+                "madre": "Carmen",
+                "movil_madre": "698731597",
+                "autoriza_salida": "0",
+                "autoriza_imagen": "0"
+            }
+        ]
+    }
+    ],
+    "profile": {
+      "name": "typicode"
+    }
+  }

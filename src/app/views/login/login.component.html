@@ -1,0 +1,20 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="assets/img/login_planes.jpg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)">
+      <input type="text" id="login" class="fadeIn second" placeholder="username" formControlName="username">
+      <input type="password" id="password" class="fadeIn third" placeholder="password" formControlName="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Error Message -->
+    <div id="formFooter" *ngIf="errorStatus">
+      <a class="underlineHover" href="#" >{{errorMessage}}</a>
+    </div>
+
+  </div>
+</div>
