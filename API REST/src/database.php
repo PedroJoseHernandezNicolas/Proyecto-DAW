@@ -121,6 +121,40 @@ class Database
 
 		return $this->connection->affected_rows;
 	}
+	/**
+     * Método para crear un nuevo usuario en la base de datos
+     */
+    public function createUser($userData)
+    {
+        $username = $userData['username'];
+        $password = hash('sha256', $userData['password']);
+
+        $query = "INSERT INTO usuario (username, password) VALUES (?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("ss", $username, $password);
+        
+        if ($stmt->execute()) {
+            return $stmt->insert_id;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Método para eliminar un usuario de la base de datos
+     */
+    public function deleteUser($userId)
+    {
+        $query = "DELETE FROM usuario WHERE id = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $userId);
+        
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
 
