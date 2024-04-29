@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'result' => 'error',
             'details' => 'Datos de solicitud vacíos'
         );
-        Response::result(400, $response);
+        Response::result(404, $response);
     }
 
     // Se intenta crear el usuario
@@ -41,13 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'userId' => $userId,
             'message' => 'Usuario creado correctamente'
         );
-        Response::result(201, $response);
+        Response::result(200, $response);
     } else {
         $response = array(
             'result' => 'error',
             'details' => 'Error al crear el usuario'
         );
-        Response::result(500, $response);
+        Response::result(404, $response);
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Si la petición es un DELETE, se intenta eliminar un usuario existente
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'result' => 'error',
             'details' => 'ID de usuario no proporcionado'
         );
-        Response::result(400, $response);
+        Response::result(404, $response);
     }
 
     // Se intenta eliminar el usuario
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'result' => 'error',
             'details' => 'Error al eliminar el usuario'
         );
-        Response::result(500, $response);
+        Response::result(404, $response);
     }
 } else {
     /**
